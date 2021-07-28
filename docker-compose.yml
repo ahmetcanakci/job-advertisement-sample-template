@@ -1,0 +1,54 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks: 
+      - esnetwork
+    depends_on: 
+      - advert-api
+
+  advert-api:
+    image: abrk/advert-api:v4.0
+    container_name: advert-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5001:80"
+    depends_on: 
+      - es01
+    networks: 
+      - esnetwork
+    
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+    container_name: elasticsearch
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      HOSTNAME: "elasticsearch"
+    ports:
+      - "9200:9200"
+    networks:
+      - esnetwork
+    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.0
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - esnetwork
+    depends_on:
+      - es01
+
+networks:
+  esnetwork:
+    driver: bridge
+    external: true
