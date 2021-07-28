@@ -9,6 +9,7 @@ Job Advertisement Sample With Docker Microservice
 How to Run this project on Docker
 
 1- Install Docker your computer.
+
 2- Run this docker command "docker-compose -f docker-compose.yml up"
 
 
@@ -23,6 +24,7 @@ How to Run this project on Docker
 
 
 5- Then create employeer and create advert.  After create advert api create Elasticsearch index (advert)
+
 6- Browser new tab then paste http://localhost:5601 you will see the kibana url for elastic search. Project has elastic search create index and write some data features.
 
 <img width="1735" alt="Screen Shot 2021-07-28 at 23 52 20" src="https://user-images.githubusercontent.com/7714272/127394360-06b033f3-372e-4297-bc12-0e17d68fcf32.png">
