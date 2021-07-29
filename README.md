@@ -33,5 +33,6 @@ How to Run this project on Docker
 
 <img width="1735" alt="Screen Shot 2021-07-28 at 23 52 20" src="https://user-images.githubusercontent.com/7714272/127394360-06b033f3-372e-4297-bc12-0e17d68fcf32.png">
 
-
+9- If you call search api method http://localhost:5001/adverts/search?date=2021-08-14 you may get "TypeError: Failed to fetch"
+error. Its related to CORS policy. If you get this error please open swagger ui  chrome incognito mode.
 
