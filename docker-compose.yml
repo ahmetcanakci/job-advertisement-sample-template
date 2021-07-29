@@ -15,7 +15,7 @@ services:
       - advert-api
 
   advert-api:
-    image: abrk/advert-api:v4.0
+    image: abrk/advert-api
     container_name: advert-api
     build:
       context: .
