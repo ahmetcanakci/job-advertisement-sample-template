@@ -5,8 +5,11 @@ Job Advertisement Sample With Docker Microservice
 How to Run this project on Docker
 
 1- Install Docker your computer.
+
 2- clone porject "git clone https://github.com/ahmetcanakci/job-advertisement-sample-template"
+
 3- run this command terminal or command window "docker network create esnetwork"
+
 4- Open cmd in project folder then run this docker command "docker-compose -f docker-compose.yml up"
 
 5- Open browser adn write http://localhost:5001/swagger/index.html
