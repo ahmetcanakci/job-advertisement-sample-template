@@ -65,18 +65,19 @@ namespace Job.Advertisement.Service.Controllers
             newAdvert.AdvertQuality = AdvertHelper.CalculateAdvertQuality(newAdvert);
 
             var employer = await employerRepositories.GetByIdAsync(item.FirmId);
+            if (employer == null)
+                return new JsonResult("Firm does not defined");
 
-            if (employer != null && employer.AdvertCount > 0)
-            {
-                await advertRepository.CreateAdvertAsync(newAdvert);
-                employer.AdvertCount -= 1;
-                await employerRepositories.UpdateEmployerAsync(employer);
-
-                await elasticClient.IndexDocumentAsync(newAdvert);
-            }
-
-            else
+            if (employer != null && employer.AdvertCount == 0)
                 return new JsonResult("Firm has not available advert count");
+
+
+            await advertRepository.CreateAdvertAsync(newAdvert);
+
+            employer.AdvertCount -= 1;
+            await employerRepositories.UpdateEmployerAsync(employer);
+
+            await elasticClient.IndexDocumentAsync(newAdvert);
 
             return CreatedAtAction(nameof(GetByIdAsync), new { newAdvert.Id }, newAdvert);
         }

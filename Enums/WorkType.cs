@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Job.Advertisement.Service.Enums
 {
+
+    [Flags]
     public enum WorkType : int
     {
 
@@ -13,4 +15,5 @@ namespace Job.Advertisement.Service.Enums
         [Display(Description = "Part time")]
         PartType = 2
     }
+
 }
