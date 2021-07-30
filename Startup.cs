@@ -19,6 +19,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Nest;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Job.Advertisement.Service
 {
@@ -62,7 +63,10 @@ namespace Job.Advertisement.Service
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Job.Advertisement.Service", Version = "v1" });
+                c.SchemaFilter<EnumSchemaFilter>();
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Job.Advertisement.Service.Enums;
 
 namespace Job.Advertisement.Service.Entities
 {
@@ -19,7 +20,7 @@ namespace Job.Advertisement.Service.Entities
 
         public string SideBenefits { get; set; }
 
-        public int WorkType { get; set; }
+        public WorkType WorkType { get; set; }
 
         public decimal Salary { get; set; }
 
